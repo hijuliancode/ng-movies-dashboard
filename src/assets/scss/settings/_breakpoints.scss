@@ -1,0 +1,11 @@
+// Breakpoints
+
+/* Mobile first queries */
+
+$breakpoints: (
+  'xx':     ( min-width: 380px     ),
+  'xsmall': ( min-width: 575.98px  ),
+  'small':  ( min-width: 767.98px  ),
+  'medium': ( min-width: 991.98px  ),
+  'large':  ( min-width: 1199.98px )
+) !default;
