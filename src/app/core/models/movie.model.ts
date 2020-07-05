@@ -1,6 +1,6 @@
 export class Movie {
   $key: string;
-  id: string;
+  uid: string;
   title: string;
   release_date: Date;
   status: Boolean;

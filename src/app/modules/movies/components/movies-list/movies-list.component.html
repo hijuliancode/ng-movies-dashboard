@@ -1,4 +1,8 @@
-<nz-table #basicTable [nzData]="listOfData">
+<nz-table
+  #moviesTable
+  [nzData]="moviesList"
+  [nzLoading]="loading"
+  >
   <thead>
     <tr>
       <th>ID</th>
@@ -9,18 +13,27 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of basicTable.data">
-      <td>{{ data.id }}</td>
-      <td>{{ data.title }}</td>
-      <td>{{ data.release_date | date }}</td>
-      <td>{{ data.status ? 'Activo' : 'Inactivo' }}</td>
+    <tr *ngFor="let movie of moviesTable.data">
+      <td>{{ movie.uid }}</td>
+      <td>{{ movie.title }}</td>
+      <td>{{ movie.release_date | date }}</td>
+      <td>{{ movie.status ? 'Activo' : 'Inactivo' }}</td>
       <td class="text-right">
-        <a nzTooltipTitle="Editar" nzTooltipPlacement="top" nz-tooltip>
+        <a (click)="onDelete(movie.$key)" nzTooltipTitle="Editar" nzTooltipPlacement="top" nz-tooltip>
           <i nz-icon nzType="edit"></i>
         </a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a nzTooltipTitle="Eliminar" nzTooltipPlacement="top" nz-tooltip>
-          <i nz-icon nzType="delete"></i>
+        <a
+          nz-popconfirm
+          nzPopconfirmTitle="¿Seguro quieres eliminar esta película?"
+          nzPopconfirmPlacement="bottom"
+          (nzOnConfirm)="onDelete(movie.$key)">
+          <i nz-icon
+            nzType="delete"
+            nzTooltipTitle="Eliminar"
+            nzTooltipPlacement="top"
+            nz-tooltip>
+          </i>
         </a>
       </td>
     </tr>

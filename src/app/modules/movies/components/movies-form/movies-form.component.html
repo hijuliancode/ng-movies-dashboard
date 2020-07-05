@@ -3,7 +3,7 @@
   <a routerLink="/movies" nz-button>Volver</a>
 </div>
 <nz-divider></nz-divider>
-<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+<form nz-form [formGroup]="moviesForm" (ngSubmit)="submitForm($event, moviesForm)">
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="title">Nombre</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="El nombre no es valido!">
@@ -28,8 +28,8 @@
   <nz-form-item nz-row class="register-area">
     <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 14, offset: 6 }">
       <div class="register-buttons">
-        <button nz-button (click)="resetForm($event)">Reset</button>
-        <button nz-button nzType="primary">Guardar</button>
+        <button nz-button (click)="resetForm()" type="button">Reset</button>
+        <button nz-button nzType="primary" type="submit">Guardar</button>
       </div>
     </nz-form-control>
   </nz-form-item>

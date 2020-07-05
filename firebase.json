@@ -1,9 +1,9 @@
 {
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
+  "database": {
+    "rules": "database.rules.json"
   },
   "hosting": {
+    "site": "ng-movies-dashboard-867a2",
     "public": "dist/movies-dashboard",
     "ignore": [
       "firebase.json",
