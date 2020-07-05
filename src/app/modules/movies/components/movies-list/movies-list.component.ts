@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '../../../../shared/models/movie.model';
+
+// Services
+import { MoviesService } from 'src/app/core/services/movies/movies.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
+
+// Models
+import { Movie } from '../../../../core/models/movie.model';
 
 @Component({
   selector: 'app-movies-list',
@@ -8,34 +14,35 @@ import { Movie } from '../../../../shared/models/movie.model';
 })
 export class MoviesListComponent implements OnInit {
 
-  listOfData: Movie[] = [
-    {
-      $key: '1',
-      id: '1',
-      title: 'John Brown',
-      release_date: new Date(),
-      status: true
-    },
-    {
-      $key: '2',
-      id: '2',
-      title: 'Jim Green',
-      release_date: new Date(),
-      status: false
-    },
-    {
-      $key: '3',
-      id: '3',
-      title: 'Joe Black',
-      release_date: new Date(),
-      status: true
-    }
-  ];
+  moviesList: Movie[] = [];
+  loading = true;
 
-  constructor() { }
+  constructor(
+    private moviesService: MoviesService,
+    private nzMessageService: NzMessageService
+  ) { }
 
   ngOnInit(): void {
+    this.moviesService.getAllMovies()
+    .snapshotChanges()
+    .subscribe(item => {
+      this.moviesList = [];
+      item.forEach(element => {
+        let x = element.payload.toJSON();
+        x['$key'] = element.key;
+        this.moviesList.push(x as Movie);
+      })
+      this.loading = false;
+    });
+  }
+  
+  onEdit(movie: Movie) {
+    this.moviesService.selectedMovie = Object.assign({}, movie);
+  }
 
+  onDelete(movieKey: string) {
+    this.moviesService.deleteMovie(movieKey);
+    this.nzMessageService.error('¡Película eliminada!');
   }
 
 }

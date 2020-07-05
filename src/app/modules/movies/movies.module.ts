@@ -11,6 +11,8 @@ import { MoviesRoutingModule } from './movies-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { IconsProviderModule } from '../../icons-provider.module';
 
+import { NzMessageService } from 'ng-zorro-antd/message';
+
 @NgModule({
   declarations: [
     MoviesListComponent,
@@ -24,6 +26,9 @@ import { IconsProviderModule } from '../../icons-provider.module';
     SharedModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    NzMessageService
   ]
 })
 export class MoviesModule { }
