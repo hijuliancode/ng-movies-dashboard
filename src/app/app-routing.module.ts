@@ -16,17 +16,17 @@ const routes: Routes = [
       },
       {
         path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+        loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'movies',
-        loadChildren: () => import('./movies/movies.module').then(m => m.MoviesModule)
+        loadChildren: () => import('./modules/movies/movies.module').then(m => m.MoviesModule)
       },
     ]
   },
   {
     path: '**',
-    loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
+    loadChildren: () => import('./modules/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)
   }
 ];
 
