@@ -4,8 +4,8 @@
     "baseUrl": "./",
     "paths": {
       "@app": ["src/app/*"],
+      "@modules": ["src/app/modules/*"],
       "@services": ["src/app/core/services/*"],
-      "@forms": ["src/app/forms/*"],
       "@shared": ["src/app/shared/*"],
       "@models": ["src/app/shared/models/*"],
       "@assets": ["assets/*"],

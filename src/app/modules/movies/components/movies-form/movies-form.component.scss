@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+[nz-form] {}
+
+.phone-select {
+  width: 70px;
+}
+
+.register-area {
+  margin-bottom: 8px;
+  .register-buttons {
+    text-align: right;
+  }
+}
+
+.ant-picker {
+  width: 100%;
+}
+
+button {
+  margin-left: 8px;
+}

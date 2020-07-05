@@ -1,7 +1,7 @@
 export class Movie {
   $key: string;
-  name: string;
-  category: string;
-  location: string;
-  price: number;
+  id: string;
+  title: string;
+  release_date: Date;
+  status: Boolean;
 }

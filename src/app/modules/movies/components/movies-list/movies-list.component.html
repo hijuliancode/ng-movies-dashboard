@@ -1,1 +1,28 @@
-<p>movies-list works!</p>
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>F. Publicación</th>
+      <th>Estado</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.id }}</td>
+      <td>{{ data.title }}</td>
+      <td>{{ data.release_date | date }}</td>
+      <td>{{ data.status ? 'Activo' : 'Inactivo' }}</td>
+      <td class="text-right">
+        <a nzTooltipTitle="Editar" nzTooltipPlacement="top" nz-tooltip>
+          <i nz-icon nzType="edit"></i>
+        </a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a nzTooltipTitle="Eliminar" nzTooltipPlacement="top" nz-tooltip>
+          <i nz-icon nzType="delete"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
