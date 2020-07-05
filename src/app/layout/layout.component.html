@@ -11,6 +11,32 @@
         <h1>Movies App</h1>
       </a>
     </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nzTitle="Dashboard" nz-menu-item nzMatchRouter>
+        <i nz-icon nzType="dashboard"></i>
+        <a routerLink="/dashboard">Dashboard</a>
+      </li>
+      <li nzTitle="Películas" nz-menu-item nzMatchRouter>
+        <i nz-icon nzType="unordered-list"></i>
+        <a routerLink="/movies">Películas</a>
+      </li>
+      <li nzTitle="Turnos" nz-menu-item nzMatchRouter>
+        <i nz-icon nzType="clock-circle"></i>
+        <a routerLink="#">Turnos</a>
+      </li>
+      <li nzTitle="Administradores" nz-menu-item nzMatchRouter>
+        <i nz-icon nzType="team"></i>
+        <a routerLink="#">Administradores</a>
+      </li>
+      <li nzTitle="Perfil" nz-menu-item nzMatchRouter>
+        <i nz-icon nzType="user"></i>
+        <a routerLink="#">Perfil</a>
+      </li>
+      <li nzTitle="Cerrar Sesión" nz-menu-item nzMatchRouter>
+        <i nz-icon nzType="poweroff"></i>
+        <a routerLink="#">Cerrar Sesión</a>
+      </li>
+    </ul>
   </nz-sider>
   <nz-layout>
     <nz-header>
