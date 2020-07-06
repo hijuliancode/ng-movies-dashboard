@@ -1,5 +1,5 @@
 export class Movie {
-  $key: string;
+  $key?: string;
   uid: string;
   title: string;
   release_date: Date;

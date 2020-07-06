@@ -19,7 +19,12 @@
       <td>{{ movie.release_date | date }}</td>
       <td>{{ movie.status ? 'Activo' : 'Inactivo' }}</td>
       <td class="text-right">
-        <a (click)="onDelete(movie.$key)" nzTooltipTitle="Editar" nzTooltipPlacement="top" nz-tooltip>
+        <a
+          (click)="onEdit(movie)"
+          [routerLink]="'/movies/edit/' + movie.$key"
+          nzTooltipTitle="Editar"
+          nzTooltipPlacement="top"
+          nz-tooltip>
           <i nz-icon nzType="edit"></i>
         </a>
         <nz-divider nzType="vertical"></nz-divider>
