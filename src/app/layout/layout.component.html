@@ -12,29 +12,41 @@
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nzTitle="Dashboard" nz-menu-item nzMatchRouter>
+      <li nz-menu-item nzMatchRouter>
         <i nz-icon nzType="dashboard"></i>
-        <a routerLink="/dashboard">Dashboard</a>
+        <span>
+          <a routerLink="/dashboard">Dashboard</a>
+        </span>
       </li>
-      <li nzTitle="Películas" nz-menu-item nzMatchRouter>
+      <li nz-menu-item nzMatchRouter>
         <i nz-icon nzType="unordered-list"></i>
-        <a routerLink="/movies">Películas</a>
+        <span>
+          <a routerLink="/movies">Películas</a>
+        </span>
       </li>
-      <li nzTitle="Turnos" nz-menu-item nzMatchRouter>
+      <li nz-menu-item nzMatchRouter>
         <i nz-icon nzType="clock-circle"></i>
-        <a routerLink="#">Turnos</a>
+        <span>
+          <a routerLink="#">Turnos</a>
+        </span>
       </li>
-      <li nzTitle="Administradores" nz-menu-item nzMatchRouter>
+      <li nz-menu-item nzMatchRouter>
         <i nz-icon nzType="team"></i>
-        <a routerLink="#">Administradores</a>
+        <span>
+          <a routerLink="#">Administradores</a>
+        </span>
       </li>
-      <li nzTitle="Perfil" nz-menu-item nzMatchRouter>
+      <li nz-menu-item nzMatchRouter>
         <i nz-icon nzType="user"></i>
-        <a routerLink="#">Perfil</a>
+        <span>
+          <a routerLink="#">Perfil</a>
+        </span>
       </li>
-      <li nzTitle="Cerrar Sesión" nz-menu-item nzMatchRouter>
+      <li nz-menu-item nzMatchRouter>
         <i nz-icon nzType="poweroff"></i>
-        <a routerLink="#">Cerrar Sesión</a>
+        <span>
+          <a routerLink="#">Cerrar Sesión</a>
+        </span>
       </li>
     </ul>
   </nz-sider>
