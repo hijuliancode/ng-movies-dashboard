@@ -2,6 +2,8 @@
   #moviesTable
   [nzData]="moviesList"
   [nzLoading]="loading"
+  [nzPageSize]="5"
+  [nzHideOnSinglePage]="false"
   >
   <thead>
     <tr>
@@ -16,8 +18,14 @@
     <tr *ngFor="let movie of moviesTable.data">
       <td>{{ movie.uid }}</td>
       <td>{{ movie.title }}</td>
-      <td>{{ movie.release_date | date }}</td>
-      <td>{{ movie.status ? 'Activo' : 'Inactivo' }}</td>
+      <td>
+        <i nz-icon nzType="calendar" nzTheme="outline"></i>
+        {{ movie.release_date | date }}
+      </td>
+      <td>
+        <nz-tag *ngIf="movie.status === 'active'" [nzColor]="'green'">Activo</nz-tag>
+        <nz-tag *ngIf="movie.status === 'inactive'" [nzColor]="'red'">Inactivo</nz-tag>
+      </td>
       <td class="text-right">
         <a
           (click)="onEdit(movie)"

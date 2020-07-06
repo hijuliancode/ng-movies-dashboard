@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 // i18n
 import { en_US } from 'ng-zorro-antd/i18n';
@@ -46,6 +47,7 @@ registerLocaleData(en);
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    NzAvatarModule
   ],
   providers: [
     MoviesService,

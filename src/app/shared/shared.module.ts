@@ -15,6 +15,8 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
     NzTypographyModule,
     NzTableModule,
     NzToolTipModule,
-    NzPopconfirmModule
+    NzPopconfirmModule,
+    NzTagModule
   ]
 })
 export class SharedModule { }
