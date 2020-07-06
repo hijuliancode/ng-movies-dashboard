@@ -37,6 +37,7 @@ export class MoviesListComponent implements OnInit {
   }
   
   onEdit(movie: Movie) {
+    console.log('MOVIE EDIT', movie)
     this.moviesService.selectedMovie = Object.assign({}, movie);
   }
 

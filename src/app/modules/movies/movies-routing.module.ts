@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'new',
     component: MoviesFormComponent
   },
+  {
+    path: 'edit/:id',
+    component: MoviesFormComponent
+  },
 ];
 
 @NgModule({

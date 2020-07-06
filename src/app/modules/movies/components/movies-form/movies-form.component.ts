@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { NgForm, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { generate as generateId } from 'shortid';
 
 // Services
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { MoviesService } from '../../../../core/services/movies/movies.service';
+import { Movie } from 'src/app/core/models/movie.model';
 
 @Component({
   selector: 'app-movies-form',
@@ -12,24 +14,36 @@ import { MoviesService } from '../../../../core/services/movies/movies.service';
   styleUrls: ['./movies-form.component.scss']
 })
 export class MoviesFormComponent implements OnInit {
-
+  isEditingMovie = false;
+  movieEditingID = '';
   moviesForm!: FormGroup;
 
   constructor(
     public moviesService: MoviesService,
     private nzMessageService: NzMessageService,
+    private router: Router,
+    private route: ActivatedRoute,
     private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      this.movieEditingID = params.id;
+      console.log('this.movieEditingID', this.movieEditingID)
+      if (this.movieEditingID) {
+        this.isEditingMovie = true;
+      }
+    });
     this.moviesForm = this.fb.group({
-      title: [null, [Validators.required]],
-      release_date: [null, [Validators.required]],
-      status: [null, [Validators.required]],
+      $key: [this.moviesService.selectedMovie.$key],
+      title: [this.moviesService.selectedMovie.title, [Validators.required]],
+      release_date: [this.moviesService.selectedMovie.release_date, [Validators.required]],
+      status: [this.moviesService.selectedMovie.status, [Validators.required]],
     });
   }
 
   submitForm(e: Event, moviesForm): void {
+    console.log('SUBMIT FORM', moviesForm)
     e.preventDefault();
     for (const i in this.moviesForm.controls) {
       this.moviesForm.controls[i].markAsDirty();
@@ -37,13 +51,16 @@ export class MoviesFormComponent implements OnInit {
     }
     if (!moviesForm.value.$key) {
       const newMovie = {
-        ...moviesForm.value,
+        release_date: moviesForm.value.release_date,
+        status: moviesForm.value.status,
+        title: moviesForm.value.title,
         uid: generateId()
       }
       this.moviesService.insertMovie(newMovie);
       this.nzMessageService.success(`¡Película creada!`);
     } else {
       this.moviesService.updateMovie(moviesForm.value);
+      this.nzMessageService.success(`¡Película actualizada!`);
     }
     this.resetForm();
   }
@@ -57,6 +74,7 @@ export class MoviesFormComponent implements OnInit {
   
   resetForm(): void {
     this.moviesForm.reset();
+    this.moviesService.selectedMovie = new Movie();
     for (const key in this.moviesForm.controls) {
       this.moviesForm.controls[key].markAsPristine();
       this.moviesForm.controls[key].updateValueAndValidity();

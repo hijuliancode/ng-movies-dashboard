@@ -19,18 +19,24 @@ export class MoviesService {
   }
 
   insertMovie(movie: Movie) {
-    this.moviesList.push({
-      ...movie,
-      release_date: (movie.release_date).getTime().toString(),
-    });
+    const data = JSON.parse( JSON.stringify({
+      release_date: movie.release_date,
+      status: movie.status,
+      title: movie.title,
+      uid: movie.uid,
+    }))
+    this.moviesList.push(data);
   }
 
   updateMovie(movie: Movie) {
     console.log('service > updateMovie > movie', movie)
-    this.moviesList.update(movie.$key, {
-      ...movie,
-      release_date: (movie.release_date).getTime().toString(),
-    });
+    const data = JSON.parse( JSON.stringify({
+      release_date: movie.release_date,
+      status: movie.status,
+      title: movie.title,
+      uid: movie.uid,
+    }))
+    this.moviesList.update(movie.$key, data);
   }
 
   deleteMovie($key: string) {
