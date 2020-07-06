@@ -1,6 +1,15 @@
+<div class="box-search">
+  <nz-input-group [nzSuffix]="suffixIconSearch">
+    <input type="text" nz-input placeholder="Buscar Película (Sensible a mayúsculas y minúsculas)" [(ngModel)]="searchValue" (ngModelChange)="search()" />
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <i nz-icon nzType="search"></i>
+    <button nz-button nzSize="small" (click)="reset()">Borrar</button>
+  </ng-template>
+</div>
 <nz-table
   #moviesTable
-  [nzData]="moviesList"
+  [nzData]="listOfDisplayData"
   [nzLoading]="loading"
   [nzPageSize]="5"
   [nzHideOnSinglePage]="false"

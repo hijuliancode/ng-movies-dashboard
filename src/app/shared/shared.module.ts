@@ -16,6 +16,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
     NzTableModule,
     NzToolTipModule,
     NzPopconfirmModule,
-    NzTagModule
+    NzTagModule,
+    NzDropDownModule
   ]
 })
 export class SharedModule { }

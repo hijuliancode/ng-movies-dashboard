@@ -16,6 +16,9 @@ export class MoviesListComponent implements OnInit {
 
   moviesList: Movie[] = [];
   loading = true;
+  searchValue = '';
+  visible = false;
+  listOfDisplayData = [...this.moviesList];
 
   constructor(
     private moviesService: MoviesService,
@@ -33,7 +36,20 @@ export class MoviesListComponent implements OnInit {
         this.moviesList.push(x as Movie);
       })
       this.loading = false;
+      this.listOfDisplayData = [...this.moviesList];
     });
+  }
+
+  search(): void {
+    this.visible = false;
+    this.listOfDisplayData = this.moviesList.filter((item: Movie) => {
+      return item.title.indexOf(this.searchValue) !== -1;
+    });
+  }
+
+  reset(): void {
+    this.searchValue = '';
+    this.search();
   }
   
   onEdit(movie: Movie) {
